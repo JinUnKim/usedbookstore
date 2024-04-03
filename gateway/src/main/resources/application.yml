@@ -25,6 +25,7 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/inventories/**, 
+            
         - id: frontend
           uri: http://localhost:8080
           predicates:

@@ -46,10 +46,18 @@ public class Payment {
     }
 
     //<<< Clean Arch / Port Method
-    public void pay(PayCommand payCommand) {
+    public static void pay(Ordered ordered) {
         //implement business logic here:
+        Payment payment = new Payment();
+        
+        payment.setOrderStatus("결제완료");
+        payment.setPaymentStatus("결제완료");
+        payment.setOrderId(ordered.getOrderId() );
+        payment.setBookId(ordered.getBookId() );
+        payment.setQty(ordered.getQty() );
+        payment.setPrice(ordered.getPrice() );
 
-        Paid paid = new Paid(this);
+        Paid paid = new Paid(payment);
         paid.publishAfterCommit();
     }
 
@@ -57,28 +65,21 @@ public class Payment {
 
     //<<< Clean Arch / Port Method
     public static void cancelPayment(OrderCancelled orderCancelled) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
         Payment payment = new Payment();
-        repository().save(payment);
+        if(orderCancelled.getOrderStatus().equals("재고부족으로 인한 취소")){
+            System.out.println(orderCancelled.getOrderId() +" 재고부족으로 결제취소 완료");
+        }else{
+            payment.setOrderStatus("결제취소");
+            payment.setPaymentStatus("결제취소");
+            payment.setOrderId(orderCancelled.getOrderId() );
+            payment.setBookId(orderCancelled.getBookId() );
+            payment.setQty(orderCancelled.getQty() );
+            payment.setPrice(orderCancelled.getPrice() );
 
-        PaymentCanceled paymentCanceled = new PaymentCanceled(payment);
-        paymentCanceled.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
+            Paid paid = new Paid(payment);
+            paid.publishAfterCommit();
+        }
         
-        repository().findById(orderCancelled.get???()).ifPresent(payment->{
-            
-            payment // do something
-            repository().save(payment);
-
-            PaymentCanceled paymentCanceled = new PaymentCanceled(payment);
-            paymentCanceled.publishAfterCommit();
-
-         });
-        */
 
     }
     //>>> Clean Arch / Port Method

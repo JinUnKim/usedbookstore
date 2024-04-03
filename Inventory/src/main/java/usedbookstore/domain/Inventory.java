@@ -53,28 +53,12 @@ public class Inventory {
 
     //<<< Clean Arch / Port Method
     public static void increaseInventory(PaymentCanceled paymentCanceled) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        InventoryIncreased inventoryIncreased = new InventoryIncreased(inventory);
-        inventoryIncreased.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(paymentCanceled.get???()).ifPresent(inventory->{
+        repository().findById(Long.valueOf(paymentCanceled.getBookId())).ifPresent(inventory->{
             
-            inventory // do something
+            inventory.setQty(inventory.getQty() + paymentCanceled.getQty()); // do something
             repository().save(inventory);
 
-            InventoryIncreased inventoryIncreased = new InventoryIncreased(inventory);
-            inventoryIncreased.publishAfterCommit();
-
          });
-        */
 
     }
 
@@ -83,59 +67,30 @@ public class Inventory {
     public static void increaseInventory(BookRegistered bookRegistered) {
         //implement business logic here:
 
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        InventoryIncreased inventoryIncreased = new InventoryIncreased(inventory);
-        inventoryIncreased.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(bookRegistered.get???()).ifPresent(inventory->{
+        repository().findById(Long.valueOf(bookRegistered.getBookId())).ifPresent(inventory->{
             
-            inventory // do something
+            inventory.setQty(inventory.getQty() + bookRegistered.getQty()); // do something
             repository().save(inventory);
 
-            InventoryIncreased inventoryIncreased = new InventoryIncreased(inventory);
-            inventoryIncreased.publishAfterCommit();
 
          });
-        */
-
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void decreaseInventory(Paid paid) {
-        //implement business logic here:
 
-        /** Example 1:  new item 
-        Inventory inventory = new Inventory();
-        repository().save(inventory);
-
-        InventoryDecreased inventoryDecreased = new InventoryDecreased(inventory);
-        inventoryDecreased.publishAfterCommit();
-        OutOfInventory outOfInventory = new OutOfInventory(inventory);
-        outOfInventory.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(paid.get???()).ifPresent(inventory->{
-            
-            inventory // do something
-            repository().save(inventory);
-
-            InventoryDecreased inventoryDecreased = new InventoryDecreased(inventory);
-            inventoryDecreased.publishAfterCommit();
-            OutOfInventory outOfInventory = new OutOfInventory(inventory);
-            outOfInventory.publishAfterCommit();
+        repository().findById(Long.valueOf(paid.getBookId())).ifPresent(inventory->{
+            if(inventory.getQty() >= paid.getQty()){
+                inventory.setQty(inventory.getQty() - paid.getQty()); // do something
+                repository().save(inventory);
+            }else{
+                OutOfInventory outOfInventory = new OutOfInventory(inventory);
+                outOfInventory.setOrderId(paid.getOrderId()); 
+                outOfInventory.publishAfterCommit();
+            }
 
          });
-        */
-
     }
     //>>> Clean Arch / Port Method
 

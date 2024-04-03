@@ -34,19 +34,15 @@ public class Order {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        usedbookstore.external.PayCommand payCommand = new usedbookstore.external.PayCommand();
-        // mappings goes here
-        OrderApplication.applicationContext
-            .getBean(usedbookstore.external.PaymentService.class)
-            .pay(/* get???(), */payCommand);
-
         Ordered ordered = new Ordered(this);
         ordered.publishAfterCommit();
 
+    }
+    @PreRemove
+    public void onPreRemove() {
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
     }
-
     public static OrderRepository repository() {
         OrderRepository orderRepository = OrderApplication.applicationContext.getBean(
             OrderRepository.class
@@ -56,6 +52,16 @@ public class Order {
 
     //<<< Clean Arch / Port Method
     public static void updateStatus(OutOfInventory outOfInventory) {
+        repository().findById(outOfInventory.getOrderId()).ifPresent(order ->{
+            
+        order.setOrderStatus("재고부족으로 인한 취소");
+        repository().save(order);
+    
+        OrderCancelled orderCancelled = new OrderCancelled(order);
+        orderCancelled.publishAfterCommit();
+        
+        });
+
         //implement business logic here:
 
         /** Example 1:  new item 

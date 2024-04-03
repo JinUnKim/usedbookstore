@@ -38,5 +38,17 @@ public class PolicyHandler {
         // Sample Logic //
         Payment.cancelPayment(event);
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='Ordered'"
+    )
+    public void wheneverOrdered_Pay(@Payload Ordered ordered) {
+        Ordered event = ordered;
+        System.out.println("\n\n##### listener Pay : " + ordered + "\n\n");
+
+        // Sample Logic //
+        Payment.pay(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
