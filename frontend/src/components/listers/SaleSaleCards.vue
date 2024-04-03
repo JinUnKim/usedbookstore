@@ -112,8 +112,6 @@
                 'saleId': 0,
                 'bookId': 0,
                 'qty': 0,
-                'userId': '',
-                'status': '',
             }
         },
         methods:{

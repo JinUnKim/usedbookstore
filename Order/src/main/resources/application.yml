@@ -45,10 +45,6 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 
-api:
-  url: 
-    Payment: localhost:8083 
-    
 
 server:
   port: 8082
@@ -85,8 +81,4 @@ spring:
           destination: usedbookstore
           contentType: application/json
 
-api:
-  url: 
-    Payment: Payment:8080 
-    
 

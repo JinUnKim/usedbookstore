@@ -43,18 +43,12 @@
                             
                             
                             
-                            
-                            
-                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
-                            [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ SaleId :  {{data.saleId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ BookId :  {{data.bookId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Qty :  {{data.qty }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -125,8 +119,6 @@
                 'saleId': 0,
                 'bookId': 0,
                 'qty': 0,
-                'userId': '',
-                'status': '',
             }
         },
         methods: {

@@ -18,9 +18,6 @@
                 <Number label="Price" v-model="item.price" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="PaymentStatus" v-model="item.paymentStatus" :editMode="editMode" @change="change" />
-            </div>
-            <div>
                 <String label="OrderStatus" v-model="item.orderStatus" :editMode="editMode" @change="change" />
             </div>
             <div>

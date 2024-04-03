@@ -66,12 +66,9 @@
             values: [],
             headers: 
                 [
-                    { text: "id", value: "id" },
                     { text: "saleId", value: "saleId" },
                     { text: "bookId", value: "bookId" },
                     { text: "qty", value: "qty" },
-                    { text: "userId", value: "userId" },
-                    { text: "status", value: "status" },
                 ],
             sale : [],
             newValue: {},
@@ -92,8 +89,6 @@
                 'saleId': 0,
                 'bookId': 0,
                 'qty': 0,
-                'userId': '',
-                'status': '',
             }
         },
         methods: {

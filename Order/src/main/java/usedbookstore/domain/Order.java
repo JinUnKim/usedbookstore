@@ -17,8 +17,6 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private Long orderId;
 
     private Long bookId;
@@ -31,15 +29,6 @@ public class Order {
 
     @PostPersist
     public void onPostPersist() {
-        //Following code causes dependency to external APIs
-        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
-
-        usedbookstore.external.PayCommand payCommand = new usedbookstore.external.PayCommand();
-        // mappings goes here
-        OrderApplication.applicationContext
-            .getBean(usedbookstore.external.PaymentService.class)
-            .pay(/* get???(), */payCommand);
-
         Ordered ordered = new Ordered(this);
         ordered.publishAfterCommit();
 

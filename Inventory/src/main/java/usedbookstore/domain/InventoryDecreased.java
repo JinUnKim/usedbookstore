@@ -11,7 +11,6 @@ import usedbookstore.infra.AbstractEvent;
 @ToString
 public class InventoryDecreased extends AbstractEvent {
 
-    private Long id;
     private Long bookId;
     private String bookName;
     private Integer qty;

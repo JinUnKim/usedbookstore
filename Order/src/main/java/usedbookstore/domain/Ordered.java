@@ -11,7 +11,6 @@ import usedbookstore.infra.AbstractEvent;
 @ToString
 public class Ordered extends AbstractEvent {
 
-    private Long id;
     private Long orderId;
     private Long bookId;
     private Integer qty;

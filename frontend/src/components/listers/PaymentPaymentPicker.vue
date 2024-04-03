@@ -27,9 +27,6 @@
                                 Price :  {{item.price }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                PaymentStatus :  {{item.paymentStatus }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
                                 OrderStatus :  {{item.orderStatus }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
@@ -85,11 +82,7 @@
                 var obj = {}
                 if(val != undefined) {
                     var arr = this.list[val]._links.self.href.split('/');
-                    obj['id'] = arr[4]; 
-                    
-                    
-                    
-                    
+                    obj['paymentId'] = arr[4]; 
                     
                     
                     

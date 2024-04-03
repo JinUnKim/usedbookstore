@@ -113,7 +113,6 @@
                 'orderId': 0,
                 'bookId': 0,
                 'price': 0,
-                'paymentStatus': '',
                 'orderStatus': '',
                 'qty': 0,
             }

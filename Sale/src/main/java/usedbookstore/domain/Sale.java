@@ -16,17 +16,11 @@ public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private Long saleId;
 
     private Long bookId;
 
     private Integer qty;
-
-    private String userId;
-
-    private String status;
 
     @PostPersist
     public void onPostPersist() {

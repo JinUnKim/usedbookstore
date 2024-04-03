@@ -35,19 +35,19 @@ mvn spring-boot:run
 ## Test by API
 - Order
 ```
- http :8088/orders id="id" orderId="orderId" bookId="bookId" qty="qty" orderStatus="orderStatus" price="price" 
+ http :8088/orders orderId="orderId" bookId="bookId" qty="qty" orderStatus="orderStatus" price="price" 
 ```
 - Payment
 ```
- http :8088/payments id="id" paymentId="paymentId" orderId="orderId" bookId="bookId" price="price" paymentStatus="paymentStatus" orderStatus="orderStatus" qty="qty" 
+ http :8088/payments paymentId="paymentId" orderId="orderId" bookId="bookId" price="price" orderStatus="orderStatus" qty="qty" 
 ```
 - Sale
 ```
- http :8088/sales id="id" saleId="saleId" bookId="bookId" qty="qty" userId="userId" status="status" 
+ http :8088/sales saleId="saleId" bookId="bookId" qty="qty" 
 ```
 - Inventory
 ```
- http :8088/inventories id="id" bookId="bookId" bookName="bookName" qty="qty" price="price" 
+ http :8088/inventories bookId="bookId" bookName="bookName" qty="qty" price="price" 
 ```
 
 

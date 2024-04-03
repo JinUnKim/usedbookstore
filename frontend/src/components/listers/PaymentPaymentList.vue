@@ -46,17 +46,13 @@
                             
                             
                             
-                            
-                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
-                            [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ PaymentId :  {{data.paymentId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ OrderId :  {{data.orderId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ BookId :  {{data.bookId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Price :  {{data.price }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ PaymentStatus :  {{data.paymentStatus }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ OrderStatus :  {{data.orderStatus }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Qty :  {{data.qty }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
@@ -130,7 +126,6 @@
                 'orderId': 0,
                 'bookId': 0,
                 'price': 0,
-                'paymentStatus': '',
                 'orderStatus': '',
                 'qty': 0,
             }

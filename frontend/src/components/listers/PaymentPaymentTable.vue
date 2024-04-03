@@ -66,12 +66,10 @@
             values: [],
             headers: 
                 [
-                    { text: "id", value: "id" },
                     { text: "paymentId", value: "paymentId" },
                     { text: "orderId", value: "orderId" },
                     { text: "bookId", value: "bookId" },
                     { text: "price", value: "price" },
-                    { text: "paymentStatus", value: "paymentStatus" },
                     { text: "orderStatus", value: "orderStatus" },
                     { text: "qty", value: "qty" },
                 ],
@@ -95,7 +93,6 @@
                 'orderId': 0,
                 'bookId': 0,
                 'price': 0,
-                'paymentStatus': '',
                 'orderStatus': '',
                 'qty': 0,
             }

@@ -66,7 +66,6 @@
             values: [],
             headers: 
                 [
-                    { text: "id", value: "id" },
                     { text: "bookId", value: "bookId" },
                     { text: "bookName", value: "bookName" },
                     { text: "qty", value: "qty" },

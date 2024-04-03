@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import usedbookstore.PaymentApplication;
+import usedbookstore.domain.Paid;
 import usedbookstore.domain.PaymentCanceled;
 
 @Entity
@@ -16,8 +17,6 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private Long paymentId;
 
     private Long orderId;
@@ -26,14 +25,15 @@ public class Payment {
 
     private Integer price;
 
-    private String paymentStatus;
-
     private String orderStatus;
 
     private Integer qty;
 
     @PostPersist
     public void onPostPersist() {
+        Paid paid = new Paid(this);
+        paid.publishAfterCommit();
+
         PaymentCanceled paymentCanceled = new PaymentCanceled(this);
         paymentCanceled.publishAfterCommit();
     }
@@ -44,16 +44,6 @@ public class Payment {
         );
         return paymentRepository;
     }
-
-    //<<< Clean Arch / Port Method
-    public void pay(PayCommand payCommand) {
-        //implement business logic here:
-
-        Paid paid = new Paid(this);
-        paid.publishAfterCommit();
-    }
-
-    //>>> Clean Arch / Port Method
 
     //<<< Clean Arch / Port Method
     public static void cancelPayment(OrderCancelled orderCancelled) {
@@ -76,6 +66,30 @@ public class Payment {
 
             PaymentCanceled paymentCanceled = new PaymentCanceled(payment);
             paymentCanceled.publishAfterCommit();
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void pay(Ordered ordered) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Payment payment = new Payment();
+        repository().save(payment);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(ordered.get???()).ifPresent(payment->{
+            
+            payment // do something
+            repository().save(payment);
+
 
          });
         */

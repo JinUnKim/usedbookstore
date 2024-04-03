@@ -8,7 +8,6 @@ import usedbookstore.infra.AbstractEvent;
 @Data
 public class InventoryRegistered extends AbstractEvent {
 
-    private Long id;
     private Long bookId;
     private String bookName;
     private Integer qty;

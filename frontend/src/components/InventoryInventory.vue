@@ -16,7 +16,7 @@
         </v-card-title >        
 
         <v-card-text>
-            <Number label="BookId" v-model="value.bookId" :editMode="editMode" :inputUI="''"/>
+            <Number v-if="editMode" label="BookId" v-model="value.bookId" :editMode="editMode" :inputUI="''"/>
             <String label="BookName" v-model="value.bookName" :editMode="editMode" :inputUI="''"/>
             <Number label="Qty" v-model="value.qty" :editMode="editMode" :inputUI="''"/>
             <Number label="Price" v-model="value.price" :editMode="editMode" :inputUI="''"/>

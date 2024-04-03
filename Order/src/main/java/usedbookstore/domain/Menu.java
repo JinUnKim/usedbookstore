@@ -12,10 +12,6 @@ import lombok.Data;
 @Data
 public class Menu {
 
-    @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-
     private Long bookId;
     private String bookName;
     private Integer qty;

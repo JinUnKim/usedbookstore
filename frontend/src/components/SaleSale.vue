@@ -16,11 +16,9 @@
         </v-card-title >        
 
         <v-card-text>
-            <Number label="SaleId" v-model="value.saleId" :editMode="editMode" :inputUI="''"/>
+            <Number v-if="editMode" label="SaleId" v-model="value.saleId" :editMode="editMode" :inputUI="''"/>
             <Number label="BookId" v-model="value.bookId" :editMode="editMode" :inputUI="''"/>
             <Number label="Qty" v-model="value.qty" :editMode="editMode" :inputUI="''"/>
-            <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
-            <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>
