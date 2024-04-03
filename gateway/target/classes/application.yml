@@ -1,0 +1,84 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+#<<< API Gateway / Routes
+      routes:
+        - id: Order
+          uri: http://localhost:8082
+          predicates:
+            - Path=/orders/**, 
+        - id: Payment
+          uri: http://localhost:8083
+          predicates:
+            - Path=/payments/**, 
+        - id: Sale
+          uri: http://localhost:8084
+          predicates:
+            - Path=/sales/**, 
+        - id: Inventory
+          uri: http://localhost:8085
+          predicates:
+            - Path=/inventories/**, 
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+#>>> API Gateway / Routes
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: Order
+          uri: http://order:8080
+          predicates:
+            - Path=/orders/**, 
+        - id: Payment
+          uri: http://payment:8080
+          predicates:
+            - Path=/payments/**, 
+        - id: Sale
+          uri: http://sale:8080
+          predicates:
+            - Path=/sales/**, 
+        - id: Inventory
+          uri: http://inventory:8080
+          predicates:
+            - Path=/inventories/**, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
