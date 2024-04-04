@@ -16,6 +16,11 @@ spec:
     spec:
       containers:
         - name: inventory
-          image: jinunkim/homeinventory:0403
+          image: jinunkim/inventory:0407
           ports:
             - containerPort: 8080
+          resources:
+              limits:
+                cpu: 500m
+              requests:
+                cpu: 200mll
